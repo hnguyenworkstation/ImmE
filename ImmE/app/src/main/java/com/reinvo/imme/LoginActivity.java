@@ -41,7 +41,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -89,26 +89,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptLogin();
+            }
+        });
+
         TextView mRegister_link = (TextView) findViewById(R.id.register_link);
-        mRegister_link.setOnClickListener(this);
+        mRegister_link.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent appSettingIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(appSettingIntent);
+            }
+        });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.email_sign_in_button:
-                attemptLogin();
-                break;
-            case R.id.register_link:
-                startActivity(new Intent(this, RegisterActivity.class));
-                break;
-        }
     }
 
     private void populateAutoComplete() {

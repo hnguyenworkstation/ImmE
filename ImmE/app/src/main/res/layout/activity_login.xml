@@ -23,7 +23,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -105,14 +106,13 @@
                 android:background="#DDAFAF"
                 android:theme="@style/Base.Theme.AppCompat.Dialog.Alert" />
             <TextView
-                android:id="@+id/register_link"
                 android:fontFamily="@string/login_font_family"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contextClickable="true"
                 android:text="@string/require_signup"
+                android:id="@+id/register_link"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
